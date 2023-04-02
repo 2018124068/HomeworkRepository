@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>회원 가입</title>
+        <link rel="stylesheet" type="text/css" href="main.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <h1>Welcome to Internet-Programming Shop</h1>
+            </div>
+            <div class="menu">
+                <a href="login.html">로그인</a>                          
+                <a href="signup.html">회원가입</a>
+            </div>
+            <div class="main">
+                <fieldset>
+                    <legend>개인정보(필수)</legend>
+                    이름 : <input type="text" name="user_name" placeholder="이름을 입력하세요" autofocus required autocomplete="on"><br>
+                    생일 : <input type="date" name="birthday"><br>
+                    학년 : <input type="number" name="grade" min="1" max="6" step="1"><br>
+                    전화번호: <input type="tel" value="(###)###-####" name="tel" required><br>
+                    이메일: <input type="email" name="user-email"><br>
+                    유저 아이디: <input type="text" name="ID" placeholder="아이디를 입력하세요" required autocomplete="off"><br>
+                    비밀번호 : <input type="password" name="PW" placeholder="비밀번호를 입력하세요" required autocomplete="off"><br>
+                    비밀번호 확인 : <input type="password" name="PW-Confirm" placeholder="비밀번호 확인" required><br>
+                    사이트 유입 경로 : 
+                    <br><input type="radio" name="path" value="Recommendation"> 지인 추천
+                    <br><input type="radio" name="path" value="Search"> 검색
+                    <br><input type="radio" name="path" value="Advertising"> 광고
+                    <br><input type="radio" name="path" value="etc"> 기타 <br>
+                    가입 이유:
+                    <br><input type="checkbox" name="reason" value="Convenience"> 편리한 이용
+                    <br><input type="checkbox" name="reason" value="Expansion"> 확장 기능 사용
+                    <br><input type="checkbox" name="reason" value="Curiosity"> 호기심
+                    <br><input type="checkbox" name="reason" value="None"> 없음 <br>
+                    <input id="signup" type="submit" value="Signup" name="signup"><input id="cancel" type="button" value="Cancel" name="cancel">
+                </fieldset>
+            </div>
+        </div>
+    </body>
+</html>
