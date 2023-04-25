@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>로그인</title>
+        <link rel="stylesheet" type="text/css" href="main.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <h1>InP Shop</h1>
+            </div>
+            <div class="menu">
+                <a href="index.html">메인페이지</a>
+                <a href="login.html">로그인</a>                          
+                <a href="signup.html">회원가입</a>
+            </div>
+            <div class="main">
+                <fieldset>
+                    <legend>회원정보(필수)</legend>
+                    유저 아이디: <input type="text" name="ID" placeholder="아이디를 입력하세요" required autocomplete="off"><br>
+                    비밀번호 : <input type="password" name="PW" placeholder="비밀번호를 입력하세요" required autocomplete="off"><br>
+                    비밀번호 확인 : <input type="password" name="PW-Confirm" placeholder="비밀번호 확인" required><br>
+                    <input id="signup" type="submit" value="로그인" name="login"><input id="cancel" type="button" value="회원가입" name="signup" onclick="location.href='signup.html'">
+                </fieldset>
+            </div>
+        </div>
+    </body>
+</html>
