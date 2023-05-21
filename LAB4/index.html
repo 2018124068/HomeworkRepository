@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Welcome to Inp-mall</title>
+        <link rel="stylesheet" type="text/css" href="main.css">
+    </head>
+    <body>
+        <div class="first_container" id="index">
+            <div class="header">
+                <h1 class="move">InP Shop</h1>
+            </div>
+            <div class="menu">
+                <div class="nav_container">
+                    <div class="nav"><a href="index.html">메인페이지</a></div>
+                    <div class="nav"><a href="login.html">로그인</a></div>
+                    <div class="nav"><a href="signup.html"> 회원가입</a></div>
+                </div>
+            </div>
+            <div class="product">
+                <h2>Product</h2>
+            </div>
+            <div class="search">
+                <input type="text" id="searchInput" placeholder="검색어를 입력하세요">
+                <select id="categoryFilter">
+                    <option value="">전체</option>
+                    <option value="HTML">HTML</option>
+                    <option value="CSS">CSS</option>
+                    <option value="JS">JS</option>
+                </select>
+                <select id="sortOption">
+                    <option value="asc">가격 오름차순</option>
+                    <option value="desc">가격 내림차순</option>
+                </select>
+            
+            </div>
+            <div class="main">
+                <div class="main_container"></div>
+                <script>
+                    fetch('Product.json')
+                        .then(response => response.json())
+                        .then(data => {
+                            const container = document.querySelector('.container');
+            
+                            data.products.forEach(product => {
+                                const productDiv = document.createElement('div');
+                                productDiv.classList.add('product');
+            
+                                const image = document.createElement('img');
+                                image.src = product.image;
+                                image.alt = product.description;
+            
+                                const overlay = document.createElement('div');
+                                overlay.classList.add('overlay');
+            
+                                const description = document.createElement('p');
+                                description.textContent = product.description;
+            
+                                const price = document.createElement('p');
+                                price.textContent = `가격: ${product.price}원`;
+            
+                                overlay.appendChild(description);
+                                overlay.appendChild(price);
+            
+                                productDiv.appendChild(image);
+                                productDiv.appendChild(overlay);
+            
+                                container.appendChild(productDiv);
+                            });
+                        });
+                </script>
+
+                <div class="container"></div>
+            
+                <script>
+                    
+                    function fetchAndFilterProducts() {
+                        fetch('Product.json')
+                            .then(response => response.json())
+                            .then(data => {
+                                const container = document.querySelector('.container');
+                                container.innerHTML = ''; 
+            
+                                const keyword = document.getElementById('searchInput').value.toLowerCase();
+                                const category = document.getElementById('categoryFilter').value;
+                                const sortOption = document.getElementById('sortOption').value;
+            
+                                const filteredProducts = data.products.filter(product => {
+                                    
+                                    if (keyword && !product.description.toLowerCase().includes(keyword)) {
+                                        return false;
+                                    }
+                                    
+                                    if (category && product.category !== category) {
+                                        return false;
+                                    }
+                                    return true;
+                                });
+            
+                                
+                                if (sortOption === 'asc') {
+                                    filteredProducts.sort((a, b) => a.price - b.price);
+                                } else if (sortOption === 'desc') {
+                                    filteredProducts.sort((a, b) => b.price - a.price);
+                                }
+            
+                                filteredProducts.forEach(product => {
+                                    const productDiv = document.createElement('div');
+                                    productDiv.classList.add('product');
+            
+                                    const image = document.createElement('img');
+                                    image.src = product.image;
+                                    image.alt = product.description;
+            
+                                    const overlay = document.createElement('div');
+                                    overlay.classList.add('overlay');
+            
+                                    const description = document.createElement('p');
+                                    description.textContent = product.description;
+            
+                                    const price = document.createElement('p');
+                                    price.textContent = `가격: ${product.price}원`;
+            
+                                    overlay.appendChild(description);
+                                    overlay.appendChild(price);
+            
+                                    productDiv.appendChild(image);
+                                    productDiv.appendChild(overlay);
+            
+                                    container.appendChild(productDiv);
+                                });
+                            });
+                    }
+            
+                    
+                    document.getElementById('searchInput').addEventListener('input', fetchAndFilterProducts);
+                    document.getElementById('categoryFilter').addEventListener('change', fetchAndFilterProducts);
+                    document.getElementById('sortOption').addEventListener('change', fetchAndFilterProducts);
+            
+                    
+                    fetchAndFilterProducts();
+                </script>
+            </div>
+        </div>
+    </body>
+</html>
