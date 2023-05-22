@@ -37,7 +37,7 @@
             <div class="main">
                 <div class="main_container"></div>
                 <script>
-                    fetch('Product.json')
+                    fetch('product.json')
                         .then(response => response.json())
                         .then(data => {
                             const container = document.querySelector('.container');
@@ -75,7 +75,7 @@
                 <script>
                     
                     function fetchAndFilterProducts() {
-                        fetch('Product.json')
+                        fetch('product.json')
                             .then(response => response.json())
                             .then(data => {
                                 const container = document.querySelector('.container');
